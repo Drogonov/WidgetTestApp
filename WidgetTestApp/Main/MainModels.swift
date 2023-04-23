@@ -11,5 +11,5 @@ import Foundation
 
 struct MainViewModel: Equatable {
     var title: String = ""
-    var colors: [String] = []
+    var states: [String] = []
 }

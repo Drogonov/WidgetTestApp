@@ -22,9 +22,11 @@ struct LockScreenView: View {
 
     var body: some View {
         HStack {
-            LeftHeader(countryFlag: countryFlag,
-                       countryName: countryName)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            LeftHeader(
+                countryFlag: countryFlag,
+                countryName: countryName
+            )
+            .frame(maxWidth: .infinity, alignment: .leading)
             RightHeader()
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
@@ -33,9 +35,11 @@ struct LockScreenView: View {
 
 struct LockScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        LockScreenView(countryFlag: "🇦🇺",
-                       countryName: "Australia")
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        LockScreenView(
+            countryFlag: "🇦🇺",
+            countryName: "Australia"
+        )
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
 
@@ -58,17 +62,21 @@ struct LeftHeader: View {
             Spacer()
                 .frame(width: 10)
             Text(countryName)
-                .font(.system(size: 20,
-                              weight: .medium))
+                .font(.system(
+                    size: 20,
+                    weight: .medium
+                ))
         }
     }
 }
 
 struct LeftHeader_Previews: PreviewProvider {
     static var previews: some View {
-        LeftHeader(countryFlag: "🇦🇺",
-                   countryName: "Australia")
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        LeftHeader(
+            countryFlag: "🇦🇺",
+            countryName: "Australia"
+        )
+        .previewContext(WidgetPreviewContext(family: .systemMedium))
     }
 }
 
@@ -76,9 +84,11 @@ struct LeftHeader_Previews: PreviewProvider {
 struct RightHeader: View {
     var body: some View {
         HStack {
-            VPNLogo(text: "VPN is active",
-                    fontSize: 15,
-                    cornerRadius: 6)
+            VPNLogo(
+                text: "VPN is active",
+                fontSize: 15,
+                cornerRadius: 6
+            )
             Spacer()
                 .frame(width: 24)
         }

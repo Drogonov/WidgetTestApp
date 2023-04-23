@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
 extension MainViewController: MainViewControllerInput {
     func setView(with viewModel: MainViewModel) {
         navigationItem.title = viewModel.title
-        tableView.set(colors: viewModel.colors)
+        tableView.set(states: viewModel.states)
     }
 }
 

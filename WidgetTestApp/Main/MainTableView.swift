@@ -20,7 +20,7 @@ class MainTableView: UIView {
 
     // MARK: - Private Properties
 
-    private var colorValues: [String] = []
+    private var stateValues: [String] = []
 
     private var tableView = UITableView(frame: .zero, style: .insetGrouped)
 
@@ -37,8 +37,8 @@ class MainTableView: UIView {
 
     // MARK: - Methods
 
-    func set(colors: [String]) {
-        self.colorValues = colors
+    func set(states: [String]) {
+        self.stateValues = states
         tableView.reloadData()
     }
 }
@@ -71,17 +71,17 @@ extension MainTableView: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Colors"
+        return "States"
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colorValues.count
+        return stateValues.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        let model = colorValues[indexPath.row]
+        let model = stateValues[indexPath.row]
         cell.textLabel?.text = model
 
         return cell

@@ -16,11 +16,10 @@ class LiveActivityManager: ObservableObject {
 
     // MARK: - STARTING
 
-    func startActivity(_ country: (String, String)) {
+    func startActivity(_ state: String) {
         Task {
             let attributes = Attributes()
-            let state = Attributes.ContentState(contryFlag: country.0,
-                                                countryName: country.1)
+            let state = Attributes.ContentState(stateCode: state)
             do {
                 let activity = try Activity<Attributes>.request(
                     attributes: attributes,
@@ -36,9 +35,9 @@ class LiveActivityManager: ObservableObject {
 
     // MARK: - UPDATING
 
-    func updateActivity(_ country: (String, String)) {
+    func updateActivity(_ state: String) {
         Task {
-            let updatedStatus = Attributes.ContentState(contryFlag: country.0, countryName: country.1)
+            let updatedStatus = Attributes.ContentState(stateCode: state)
             for activtiy in Activity<Attributes>.activities {
                 await activtiy.update(using: updatedStatus)
             }

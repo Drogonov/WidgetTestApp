@@ -27,12 +27,16 @@ struct DynamicIslandTopSegment: View {
             Spacer()
                 .frame(width: 8)
             Text(countryName)
-                .font(.system(size: 24,
-                              weight: .semibold))
+                .font(.system(
+                    size: 24,
+                    weight: .semibold
+                ))
             Spacer()
-            VPNLogo(text: "VPN is active",
-                    fontSize: 15,
-                    cornerRadius: 6)
+            VPNLogo(
+                text: "VPN is active",
+                fontSize: 15,
+                cornerRadius: 6
+            )
         }
     }
 }
@@ -40,8 +44,10 @@ struct DynamicIslandTopSegment: View {
 struct DynamicIslandTopSegment_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
-            DynamicIslandTopSegment(countryFlag: "🇦🇺",
-                                    countryName: "Australia")
+            DynamicIslandTopSegment(
+                countryFlag: "🇦🇺",
+                countryName: "Australia"
+            )
             .previewContext(WidgetPreviewContext(family: .systemMedium))
         }
     }

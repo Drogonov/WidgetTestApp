@@ -34,7 +34,7 @@ extension MainPresenter: MainPresenterInput {
         widgetService?.resetActivities()
 
         viewModel.title = "Widget Test"
-        viewModel.colors = [
+        viewModel.states = [
             "green",
             "yellow",
             "red"
@@ -44,8 +44,8 @@ extension MainPresenter: MainPresenterInput {
     }
 
     func didSelectColor(index: IndexPath) {
-//        let color = viewModel.colors[index.row]
-        widgetService?.updateChoosedServer(index)
+        let state = viewModel.states[index.row]
+        widgetService?.updateChoosedState(state)
     }
 
     func settingsTapped() {
