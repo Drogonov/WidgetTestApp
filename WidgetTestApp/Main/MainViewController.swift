@@ -41,7 +41,7 @@ extension MainViewController: MainViewControllerInput {
 
 extension MainViewController: MainTableViewOutput {
     func didSelectItem(indexPath: IndexPath) {
-        presenter?.didSelectColor(index: indexPath.row)
+        presenter?.didSelectColor(index: indexPath)
     }
 }
 
@@ -54,8 +54,19 @@ extension MainViewController {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-
         tableView.delegate = self
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Start",
+            style: .plain,
+            target: self,
+            action: #selector(settingsTapped)
+        )
+    }
+
+    @objc func settingsTapped() {
+        navigationItem.rightBarButtonItem?.title = "Stop"
+        presenter?.settingsTapped()
     }
 }
 

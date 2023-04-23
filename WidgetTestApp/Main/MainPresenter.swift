@@ -31,6 +31,8 @@ class MainPresenter {
 
 extension MainPresenter: MainPresenterInput {
     func viewIsReady() {
+        widgetService?.resetActivities()
+
         viewModel.title = "Widget Test"
         viewModel.colors = [
             "green",
@@ -41,8 +43,12 @@ extension MainPresenter: MainPresenterInput {
         view?.setView(with: viewModel)
     }
 
-    func didSelectColor(index: Int) {
-        let color = viewModel.colors[index]
-        widgetService?.didChangeDynamicIsland(with: color)
+    func didSelectColor(index: IndexPath) {
+//        let color = viewModel.colors[index.row]
+        widgetService?.updateChoosedServer(index)
+    }
+
+    func settingsTapped() {
+        widgetService?.changeState()
     }
 }

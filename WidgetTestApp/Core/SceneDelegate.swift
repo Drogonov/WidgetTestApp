@@ -18,10 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
 
         let vc = MainViewController()
-        let widgetService = WidgetService()
         let presenter = MainPresenter(
             view: vc,
-            widgetService: widgetService
+            widgetService: WidgetService.shared
         )
         vc.presenter = presenter
 
@@ -32,8 +31,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         print("url: \(URLContexts)")
-//        rootVC.dynamicIslandManager.stopActivity()
-//        rootVC.vpnButtonUpdate() //change state button
+        WidgetService.shared.resetActivities()
+        WidgetService.shared.changeState()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
