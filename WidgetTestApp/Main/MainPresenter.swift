@@ -47,8 +47,4 @@ extension MainPresenter: MainPresenterInput {
         let state = viewModel.states[index.row]
         widgetService?.updateChoosedState(state)
     }
-
-    func settingsTapped() {
-        widgetService?.changeState()
-    }
 }

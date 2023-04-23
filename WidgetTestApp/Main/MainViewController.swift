@@ -55,18 +55,6 @@ extension MainViewController {
             $0.edges.equalToSuperview()
         }
         tableView.delegate = self
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Start",
-            style: .plain,
-            target: self,
-            action: #selector(settingsTapped)
-        )
-    }
-
-    @objc func settingsTapped() {
-        navigationItem.rightBarButtonItem?.title = "Stop"
-        presenter?.settingsTapped()
     }
 }
 

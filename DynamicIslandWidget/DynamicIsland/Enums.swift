@@ -7,12 +7,23 @@
 
 import SwiftUI
 
-enum ColorMessage: String {
+enum WidgetState: String {
     case ok
     case warning
     case error
 
-    var messageColor: Color? {
+    var message: String {
+        switch self {
+        case .ok:
+            return "Apload Completed"
+        case .warning:
+            return "Warning smth wrong"
+        case .error:
+            return "Error pls reload app"
+        }
+    }
+
+    var messageColor: Color {
         switch self {
         case .ok: return .green
         case .warning: return .yellow

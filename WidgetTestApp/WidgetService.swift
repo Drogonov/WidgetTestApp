@@ -11,7 +11,7 @@ import Foundation
 
 protocol WidgetServiceProtocol: AnyObject {
     func updateChoosedState(_ state: String)
-    func changeState()
+    func changeState(_ state: Bool)
     func resetActivities()
 }
 
@@ -45,8 +45,8 @@ extension WidgetService: WidgetServiceProtocol {
         dynamicIslandManager.updateActivity(choosedState)
     }
 
-    func changeState() {
-        self.dynamicIslandState = !dynamicIslandState
+    func changeState(_ state: Bool) {
+        self.dynamicIslandState = state
 
         switch dynamicIslandState {
         case true:
@@ -57,6 +57,7 @@ extension WidgetService: WidgetServiceProtocol {
     }
 
     func resetActivities() {
+        self.dynamicIslandState = false
         dynamicIslandManager.stopActivity()
     }
 }

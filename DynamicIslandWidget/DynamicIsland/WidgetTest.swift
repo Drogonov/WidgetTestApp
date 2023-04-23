@@ -22,37 +22,39 @@ struct VPNStatusWidget: Widget {
 
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: Attributes.self) { context in
+            let state = WidgetState(rawValue: context.state.stateCode) ?? .error
+
             // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello")
+            return VStack {
+                Text(state.message)
             }
             .activityBackgroundTint(Color.cyan)
             .activitySystemActionForegroundColor(Color.black)
 
         } dynamicIsland: { context in
-            DynamicIsland {
+            let state = WidgetState(rawValue: context.state.stateCode) ?? .error
+
+            return DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    dynamicIslandExpandedLeadingView(
-                        color: ColorMessage(rawValue: context.state.stateCode)?.messageColor ?? .white
-                    )
+                    dynamicIslandExpandedLeadingView(state: state)
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    dynamicIslandExpandedTrailingView()
+                    dynamicIslandExpandedTrailingView(state: state)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
                     dynamicIslandExpandedBottomView()
                 }
             } compactLeading: {
-                compactLeadingView()
+                compactLeadingView(state: state)
             } compactTrailing: {
-                compactTrailingView()
+                compactTrailingView(state: state)
             } minimal: {
-                minimalView()
+                minimalView(state: state)
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
+            .widgetURL(URL(string: "http://www.apple.com"))
         }
     }
 }
@@ -63,7 +65,7 @@ fileprivate extension VPNStatusWidget {
 
     //MARK: Expanded Views
 
-    func dynamicIslandExpandedLeadingView(color: Color) -> some View {
+    func dynamicIslandExpandedLeadingView(state: WidgetState) -> some View {
         Circle()
             .stroke(
                 style: StrokeStyle(
@@ -71,21 +73,21 @@ fileprivate extension VPNStatusWidget {
                     dash: [2]
                 )
             )
-            .colorMultiply(color) // условие цвета
+            .colorMultiply(state.messageColor) // условие цвета
             .padding(1)
             .overlay(
                 Image("viZoneIcon")
                     .resizable()
                     .frame(width: 50, height: 50)
-                    .colorMultiply(color)
+                    .colorMultiply(state.messageColor)
             )
             .padding(0.1)
     }
 
-    func dynamicIslandExpandedTrailingView() -> some View {
+    func dynamicIslandExpandedTrailingView(state: WidgetState) -> some View {
         ZStack {
             VStack(spacing: 20) {
-                Text("Tasks")
+                Text(state.message)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                     .font(.system(size: 20).bold())
@@ -110,32 +112,23 @@ fileprivate extension VPNStatusWidget {
 
     //MARK: Compact Views
 
-    func compactLeadingView() -> some View {
+    func compactLeadingView(state: WidgetState) -> some View {
         HStack(alignment: .center) {
-
             RoundedRectangle(cornerRadius: 10)
                 .stroke(style: StrokeStyle(
                     lineWidth: 1.5,
                     dash: [2]
                 ))
                 .frame(width: 10)
-                .colorMultiply(.green)
+                .colorMultiply(state.messageColor)
                 .fixedSize()
-
-            //                    Text("121")
-            //                        .frame(width: 22, height: 22)
-            //                        .font(.system(size: 10).bold())
-            //                        .scaledToFill()
-            //                        .minimumScaleFactor(0.2)
-            //                        .lineLimit(1)
-
         }
     }
 
-    func compactTrailingView() -> some View {
+    func compactTrailingView(state: WidgetState) -> some View {
         HStack(alignment: .center) {
             VStack {
-                Text("Update")
+                Text(state.message)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)
                     .font(.system(size: 12).bold())
@@ -152,13 +145,13 @@ fileprivate extension VPNStatusWidget {
         }
     }
 
-    func minimalView() -> some View {
+    func minimalView(state: WidgetState) -> some View {
         NavigationLink(destination: EmptyView()) {
             ZStack {
-                Image("viZoneIcon")
+                Image(state.message)
                     .resizable()
                     .frame(width: 25, height: 25)
-                    .colorMultiply(.green)
+                    .colorMultiply(state.messageColor)
             }
         }
     }

@@ -17,7 +17,6 @@ protocol MainPresenterInput: AnyObject {
 
     func viewIsReady()
     func didSelectColor(index: IndexPath)
-    func settingsTapped()
 }
 
 // MARK: - MainViewControllerOutput
