@@ -35,9 +35,9 @@ extension MainPresenter: MainPresenterInput {
 
         viewModel.title = "Widget Test"
         viewModel.states = [
-            "green",
-            "yellow",
-            "red"
+            "ok",
+            "warning",
+            "error"
         ]
 
         view?.setView(with: viewModel)
