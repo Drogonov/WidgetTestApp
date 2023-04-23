@@ -26,9 +26,6 @@
 		84C7BE2629F5609B00359D25 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE1929F55DF800359D25 /* Attributes.swift */; };
 		84C7BE2729F5609B00359D25 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE1B29F55E0100359D25 /* LiveActivityManager.swift */; };
 		84C7BE2829F5609B00359D25 /* WidgetTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE1D29F55E1000359D25 /* WidgetTest.swift */; };
-		84C7BE2929F5609B00359D25 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE2029F55E3E00359D25 /* LockScreenView.swift */; };
-		84C7BE2A29F5609B00359D25 /* DynamicIsalndView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE2229F55E4900359D25 /* DynamicIsalndView.swift */; };
-		84C7BE2B29F5609B00359D25 /* ReuseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE2429F55E5300359D25 /* ReuseViews.swift */; };
 		84C7BE2C29F564CF00359D25 /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE1B29F55E0100359D25 /* LiveActivityManager.swift */; };
 		84C7BE2D29F564D900359D25 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7BE1929F55DF800359D25 /* Attributes.swift */; };
 /* End PBXBuildFile section */
@@ -79,9 +76,6 @@
 		84C7BE1929F55DF800359D25 /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
 		84C7BE1B29F55E0100359D25 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		84C7BE1D29F55E1000359D25 /* WidgetTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetTest.swift; sourceTree = "<group>"; };
-		84C7BE2029F55E3E00359D25 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
-		84C7BE2229F55E4900359D25 /* DynamicIsalndView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicIsalndView.swift; sourceTree = "<group>"; };
-		84C7BE2429F55E5300359D25 /* ReuseViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,19 +178,8 @@
 				84C7BE1B29F55E0100359D25 /* LiveActivityManager.swift */,
 				84C7BE1D29F55E1000359D25 /* WidgetTest.swift */,
 				8499C10B29F59802002CFD78 /* Enums.swift */,
-				84C7BE1F29F55E2E00359D25 /* Views */,
 			);
 			path = DynamicIsland;
-			sourceTree = "<group>";
-		};
-		84C7BE1F29F55E2E00359D25 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				84C7BE2029F55E3E00359D25 /* LockScreenView.swift */,
-				84C7BE2229F55E4900359D25 /* DynamicIsalndView.swift */,
-				84C7BE2429F55E5300359D25 /* ReuseViews.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,10 +309,7 @@
 				84C7BE2629F5609B00359D25 /* Attributes.swift in Sources */,
 				84C7BE2729F5609B00359D25 /* LiveActivityManager.swift in Sources */,
 				84C7BE2829F5609B00359D25 /* WidgetTest.swift in Sources */,
-				84C7BE2929F5609B00359D25 /* LockScreenView.swift in Sources */,
-				84C7BE2A29F5609B00359D25 /* DynamicIsalndView.swift in Sources */,
 				8499C10C29F59802002CFD78 /* Enums.swift in Sources */,
-				84C7BE2B29F5609B00359D25 /* ReuseViews.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

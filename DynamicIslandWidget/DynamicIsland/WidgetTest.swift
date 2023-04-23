@@ -21,15 +21,11 @@ struct WidgetTest: WidgetBundle {
 struct VPNStatusWidget: Widget {
 
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: Attributes.self) { context in
+        ActivityConfiguration(for: DynamicIslandAttributes.self) { context in
             let state = WidgetState(rawValue: context.state.stateCode) ?? .error
 
             // Lock screen/banner UI goes here
-            return VStack {
-                Text(state.message)
-            }
-            .activityBackgroundTint(Color.cyan)
-            .activitySystemActionForegroundColor(Color.black)
+            loackScreenView(state: state)
 
         } dynamicIsland: { context in
             let state = WidgetState(rawValue: context.state.stateCode) ?? .error
@@ -61,7 +57,17 @@ struct VPNStatusWidget: Widget {
 
 // MARK: - Private Methods
 
-fileprivate extension VPNStatusWidget {
+extension VPNStatusWidget {
+
+    // MARK: - Views
+
+    func loackScreenView(state: WidgetState) -> some View {
+        VStack {
+            Text(state.message)
+        }
+        .activityBackgroundTint(Color.cyan)
+        .activitySystemActionForegroundColor(Color.black)
+    }
 
     //MARK: Expanded Views
 
@@ -156,3 +162,29 @@ fileprivate extension VPNStatusWidget {
         }
     }
 }
+
+// MARK: - SwiftUIView_Previews
+
+//#if DEBUG
+//
+//@available(iOSApplicationExtension 16.2, *)
+//struct LoackScreenView_Previews: PreviewProvider {
+//    static let attributes = DynamicIslandAttributes(name: "Me")
+//    static let contentState = DynamicIslandAttributes.ContentState(stateCode: "error")
+//
+//    static var previews: some View {
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.compact))
+//            .previewDisplayName("Island Compact")
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.expanded))
+//            .previewDisplayName("Island Expanded")
+//        attributes
+//            .previewContext(contentState, viewKind: .dynamicIsland(.minimal))
+//            .previewDisplayName("Minimal")
+//        attributes
+//            .previewContext(contentState, viewKind: .content)
+//            .previewDisplayName("Notification")
+//    }
+//}
+//#endif

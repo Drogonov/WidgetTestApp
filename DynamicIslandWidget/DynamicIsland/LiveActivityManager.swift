@@ -12,16 +12,16 @@ import ActivityKit
 
 class LiveActivityManager: ObservableObject {
     
-    @Published var activity: Activity<Attributes>?
+    @Published var activity: Activity<DynamicIslandAttributes>?
 
     // MARK: - STARTING
 
     func startActivity(_ state: String) {
         Task {
-            let attributes = Attributes()
-            let state = Attributes.ContentState(stateCode: state)
+            let attributes = DynamicIslandAttributes(name: "viZone")
+            let state = DynamicIslandAttributes.ContentState(stateCode: state)
             do {
-                let activity = try Activity<Attributes>.request(
+                let activity = try Activity<DynamicIslandAttributes>.request(
                     attributes: attributes,
                     contentState: state,
                     pushType: nil
@@ -37,8 +37,8 @@ class LiveActivityManager: ObservableObject {
 
     func updateActivity(_ state: String) {
         Task {
-            let updatedStatus = Attributes.ContentState(stateCode: state)
-            for activtiy in Activity<Attributes>.activities {
+            let updatedStatus = DynamicIslandAttributes.ContentState(stateCode: state)
+            for activtiy in Activity<DynamicIslandAttributes>.activities {
                 await activtiy.update(using: updatedStatus)
             }
         }
@@ -48,7 +48,7 @@ class LiveActivityManager: ObservableObject {
 
     func stopActivity() { //If you terminate app, and reopen, you need delete previous activities. Loop is used for this
         Task {
-            for activity in Activity<Attributes>.activities {
+            for activity in Activity<DynamicIslandAttributes>.activities {
                 await activity.end(dismissalPolicy: .immediate)
             }
         }
